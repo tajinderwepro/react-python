@@ -6,7 +6,11 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/users")
+        axios.get("http://localhost:8000/users", {
+          headers: {
+            Authorization: "Bearer valid_token"
+          }
+        })
       .then(res => setUsers(res.data.data))
       .catch(err => console.error(err));
   }, []);
